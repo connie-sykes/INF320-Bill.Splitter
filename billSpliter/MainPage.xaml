@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyMauiApp.ViewModels"
+             x:Class="MyMauiApp.MainPage"
+             Title="Calculadora de Propinas">
+
+    <ContentPage.BindingContext>
+        <vm:CalculadoraViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <!-- Ingreso total consumo -->
+        <Border Stroke="#FF3628B6" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="15">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Total del Consumo:" FontSize="16" />
+                <Entry Text="{Binding TotalCuenta}"
+                       Keyboard="Numeric"
+                       Placeholder="Ej: 15000"
+                       FontSize="20" />
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Número de personas con Grid como contenedor -->
+        <Label Text="Número de personas:" FontSize="16" />
+        <Grid ColumnDefinitions="Auto, Auto, Auto" ColumnSpacing="10">
+            <Button Grid.Column="0" Text="-" Command="{Binding DisminuirPersonasCommand}" WidthRequest="50" />
+            <Label Grid.Column="1" Text="{Binding NumeroPersonas}" FontSize="20" VerticalOptions="Center" />
+            <Button Grid.Column="2" Text="+" Command="{Binding IncrementarPersonasCommand}" WidthRequest="50" />
+        </Grid>
+
+        <!-- Propina predefinida -->
+        <Label Text="Elige Propina:" FontSize="16" />
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="10%" Command="{Binding SetPropinaCommand}">
+                <Button.CommandParameter>
+                    <x:Int32>10</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button Text="15%" Command="{Binding SetPropinaCommand}">
+                <Button.CommandParameter>
+                    <x:Int32>15</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button Text="20%" Command="{Binding SetPropinaCommand}">
+                <Button.CommandParameter>
+                    <x:Int32>20</x:Int32>
+                </Button.CommandParameter>
+            </Button>
+        </HorizontalStackLayout>
+
+        <!-- Propina variable con Slider -->
+        <Label Text="{Binding PorcentajePropina, StringFormat='Propina: {0:F1}%'}" FontSize="16" />
+        <Slider Minimum="0" Maximum="50" Value="{Binding PorcentajePropina}" />
+
+        <!-- Resultados -->
+        <Border BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 10"
+                Padding="15">
+            <VerticalStackLayout Spacing="8">
+                <Label Text="{Binding SubtotalPorPersona, StringFormat='Subtotal por persona: ${0:N0}'}" FontSize="16" TextColor="White" />
+                <Label Text="{Binding PropinaPorPersona, StringFormat='Propina por persona: ${0:N0}'}" FontSize="16" TextColor="White" />
+                <Label Text="{Binding TotalPorPersona, StringFormat='Total por persona: ${0:N0}'}" FontSize="20" FontAttributes="Bold" TextColor="White" />
+            </VerticalStackLayout>
+        </Border>
+
+    </VerticalStackLayout>
+
+</ContentPage>
