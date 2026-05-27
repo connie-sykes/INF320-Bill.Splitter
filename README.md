@@ -40,7 +40,6 @@
 - Entender que es MVVM y entender como usar la biblioteca ComunnityToolkit.mvvm
 - Implementar data binding entre la vista (XAML) y la lógica (CalculadoraViewModel.cs)
 
-
 ### Impedimentos encontrados durante el desarrollo
 - En esta segunda instancia el mayor impedimento fue expandir nuestro conocimiento del uso del framework .NET MAUI como de sus librerías.
 
@@ -56,6 +55,7 @@
 - [Instalar Plantillas MAUI faltantes en Linux](https://stackoverflow.com/questions/75921435/net-maui-templates-not-in-visual-studio-2022-community)
 - [Arreglar lentitud emulador Android en Linux](https://stackoverflow.com/questions/65254168/android-emulator-very-slow-on-ubuntu-20-04)
 - [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet)
+- [.NET MAUI crash course: MVVM, Databinding and Dependency Injection](https://www.youtube.com/watch?v=XmdBXuNPShs)
 
 #### Uso de IA
 - Se utilizó Claude como herramienta de asistencia para la elaboración del proyecto, usándose para: 
@@ -65,3 +65,4 @@
 ### Conclusiones
 - Hay una complejidad no trivial al momento de configurar el entorno de desarrollo
 - El uso de el patrón MVVM ayuda a reducir la dependencia del código
+- La baja acoplación que se logra con este patrón es fundamental para aplicar pruebas unitarias
